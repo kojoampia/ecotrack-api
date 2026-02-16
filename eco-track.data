@@ -1,0 +1,252 @@
+application {
+  config {
+    baseName EcoTrackPro,
+    applicationType monolith,
+    packageName com.ecotrack.app,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    clientFramework angular,
+    buildTool maven,
+    enableHibernateCache true,
+    searchEngine no
+  }
+  entities *
+}
+
+enum type Sector {//done
+  | 'Iron and Steel',
+  | 'Aluminum',
+  | 'Cement',
+  | 'Fertilizers',
+  | 'Electricity',
+  | 'Hydrogen',
+  | 'Glass',
+  | 'Chemicals',
+    'Manufacturing', 
+}
+
+entity Tenant {//done
+  name string,
+  industry Sector,
+  region string
+}
+
+
+entity Importer {//done
+  tenantId string,
+  companyName string,
+  eoriNumber string,           // Economic Operators Registration & Identification
+  vatNumber string,
+  sector Sector,
+  country string,
+  address string,
+  contactName string,
+  contactEmail string,
+  contactPhone string,
+  authorizedRepresentative string,
+  estimatedAnnualImportVolume number, // tonnes CO₂-eq
+  agreedToTerms boolean,
+}
+
+entity ProductPassport {
+  passportData TextBlob, // JSON for flexible schema
+  version Integer,
+  createdDate Instant
+}
+
+entity Product { //done
+  name String required,
+  sku String required unique,
+  description String,
+  category String,
+  unitOfMeasure String,
+  totalCarbonFootprint BigDecimal,
+  productPassport ProductPassport,
+  createdDate Instant,
+  lastModifiedDate Instant
+}
+
+entity SupplierType { //done
+  name string,
+  category string,
+  description string,
+  tenantId string
+}
+
+entity Installation { //done
+  /** Section 1: Installation Data */
+  tenantId String,
+  installationName String required,
+  country String required,
+  unlocode String
+}
+
+entity Supplier { //done
+  companyName String required,
+  contactEmail String required,
+  industry String,
+  tier Integer,
+  address String,
+  phone String,
+  website String,
+  tenantId String,
+  products Set<Product>,
+  supplerType SupplierType,
+  installations Set<Installation>
+}
+
+entity ProductEmission { //done
+  /** Section 2: Goods Imported */
+  tenantId string required,
+  cnCode String required
+  quantity BigDecimal required 
+  productId String required
+  productName String 
+}
+
+entity RecordMetadata {
+  /** System Metadata */
+  tenantId string required,
+  status String
+  submittedBy String
+  role String
+  timestamp Instant
+  verified Boolean
+  flagged Boolean
+}
+
+entity EmissionRecord {//done
+  tenantId string required,
+  supplierId string,
+  installationId string,
+  productEmissionId string,
+  scope Scope required,
+  carbonGrams Long required, // Storing in grams for precision
+  dateRecorded LocalDate,
+  source String, // e.g., "Electricity Bill", "Logistics"
+  notes String,
+  verified Boolean,
+  confidenceScore Integer, // 1-100 scale for data reliability
+  calculationMethod String, // e.g., "Grid_Electricity_2026", "Supply_Chain_Steel"
+  uncertaintyFactor BigDecimal, // Uncertainty percentage in calculation
+}
+
+
+entity EmissionEvidence {//done
+  tenantId string required,
+  supplierId string,
+  evidenceType EvidenceType required,
+  fileName String,
+  filePath String,
+  fileSize Long,
+  mimeType String,
+  checksum String, // SHA-256 for integrity
+  uploadedAt Instant,
+  verified Boolean,
+  verificationNotes String,
+  retentionPeriod Integer, // years to retain evidence
+  legalReference String // CBAM regulation reference
+}
+
+entity EmissionReport {//done
+  tenantId string FK,
+  supplierId string FK,
+  emissionRecords Set<EmissionRecord>,
+  emissionEvidenceFiles Set<EmissionEvidence>,
+  metadata RecordMetadata
+}
+
+entity AuditTrail {//done
+  tenantId string required,
+  action AuditAction required,
+  entityType String required, // e.g., "EmissionRecord", "Product"
+  entityId Long required,
+  oldValue TextBlob,
+  newValue TextBlob,
+  changedBy String,
+  changedAt Instant,
+  ipAddress String,
+  userAgent String,
+  reason String // Business reason for change
+}
+
+entity ComplianceReport {//done
+  tenantId string required,
+  emissionReportId string,
+  reportType ReportType required,
+  reportingPeriod String required, // e.g., "2026-Q1", "2026"
+  status ReportStatus required,
+  generatedAt Instant,
+  submittedAt Instant,
+  submissionReference String, // TARIC reference number
+  totalEmissions BigDecimal,
+  scope1Emissions BigDecimal,
+  scope2Emissions BigDecimal,
+  scope3Emissions BigDecimal,
+  confidenceLevel Integer, // Overall report confidence 1-100
+  reviewNotes String
+}
+
+
+//enums done
+enum Scope {
+  SCOPE_1, SCOPE_2, SCOPE_3
+}
+
+enum EvidenceType {
+  PDF_INVOICE, IOT_SENSOR_LOG, CALCULATION_SPREADSHEET, THIRD_PARTY_CERTIFICATE,
+  UTILITY_BILL, TRANSPORT_MANIFEST, SUPPLIER_DECLARATION, REGULATORY_REPORT
+}
+
+enum AuditAction {
+  CREATE, UPDATE, DELETE, VERIFY, SUBMIT, APPROVE, REJECT
+}
+
+enum ReportType {
+  CBAM_DECLARATION, VERIFICATION_REPORT, INTERNAL_AUDIT, REGULATORY_FILING
+}
+
+enum ReportStatus {
+  DRAFT, PENDING_REVIEW, APPROVED, SUBMITTED, ACCEPTED, REJECTED
+}
+
+relationship OneToMany {//done
+  Supplier{products} to Product{supplier(companyName)},
+  Supplier{installations} to Installation{supplier(companyName)},
+  Supplier{emissionReports} to EmissionReport{supplier(companyName)},
+  Product{emissionRecords} to EmissionRecord{product(name)},
+  Product{passports} to ProductPassport{product(sku)},
+  EmissionRecord{evidences} to EmissionEvidence{emissionRecord},
+  EmissionRecord{auditEntries} to AuditTrail{entityId},
+  EmissionReport{emissionRecords} to EmissionRecord{report},
+  EmissionReport{evidences} to EmissionEvidence{report},
+  ComplianceReport{auditEntries} to AuditTrail{entityId}
+}
+
+relationship ManyToOne {//done
+  EmissionEvidence{emissionRecord} to EmissionRecord,
+  AuditTrail{relatedEmissionRecord} to EmissionRecord,
+  AuditTrail{complianceReport} to ComplianceReport
+}
+
+entity PriceTier {//done
+  name string,
+  badge string,
+  price BigDecimal,
+  currency string,
+  billingCycle string,
+  features Set<String>
+}
+
+
+entity AiBudget { //done
+  tenantId string,
+  amount BigDecimal,
+  consumed BigDecimal,
+  lastPurchased LocalDate,
+  purchased Amount,
+}
+
+dto * with mapstruct
+service * with serviceImpl
+paginate * with pagination

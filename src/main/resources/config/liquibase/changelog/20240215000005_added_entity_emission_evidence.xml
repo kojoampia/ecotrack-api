@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity EmissionEvidence.
+    -->
+    <changeSet id="20240215000005-1" author="jhipster">
+        <createTable tableName="emission_evidence">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tenant_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_id" type="varchar(100)"/>
+            <column name="evidence_type" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file_name" type="varchar(255)"/>
+            <column name="file_path" type="clob"/>
+            <column name="file_size" type="bigint"/>
+            <column name="mime_type" type="varchar(100)"/>
+            <column name="checksum" type="varchar(64)"/>
+            <column name="uploaded_at" type="timestamp"/>
+            <column name="verified" type="boolean"/>
+            <column name="verification_notes" type="clob"/>
+            <column name="retention_period" type="integer"/>
+            <column name="legal_reference" type="clob"/>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+        <createIndex indexName="idx_emission_evidence_tenant_id" tableName="emission_evidence">
+            <column name="tenant_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_emission_evidence_supplier_id" tableName="emission_evidence">
+            <column name="supplier_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_emission_evidence_type" tableName="emission_evidence">
+            <column name="evidence_type"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

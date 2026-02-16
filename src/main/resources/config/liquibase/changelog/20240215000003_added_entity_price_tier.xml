@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity PriceTier.
+    -->
+    <changeSet id="20240215000003-1" author="jhipster">
+        <createTable tableName="jhi_price_tier">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(120)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="badge" type="varchar(120)"/>
+            <column name="price" type="decimal(21,2)"/>
+            <column name="currency" type="varchar(20)"/>
+            <column name="billing_cycle" type="varchar(50)"/>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+        <createTable tableName="jhi_price_tier_features">
+            <column name="price_tier_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feature" type="varchar(255)"/>
+        </createTable>
+
+        <createIndex indexName="idx_price_tier_feature" tableName="jhi_price_tier_features">
+            <column name="feature"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

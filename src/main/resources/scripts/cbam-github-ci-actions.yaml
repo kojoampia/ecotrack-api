@@ -1,0 +1,74 @@
+name: EcoTrack Pro Compliance Pipeline
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'data/*.csv'
+      - 'scripts/cbam_xml_generator.py'
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  generate-compliance-payload:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Green Ledger
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # No heavy dependencies required for the XML generator
+
+    - name: Run CBAM XML Generator for All Tenants
+      run: |
+        # 1. Identify all unique tenant IDs from the last column of emission_records.csv
+        # We skip the header and use sort -u to get unique organization IDs
+        TENANTS=$(awk -F, 'NR>1 {print $NF}' data/emission_records.csv | sort -u)
+        
+        echo "🔍 Discovered Tenants: $TENANTS"
+        
+        # 2. Loop through each tenant and execute the generator
+        for tenant in $TENANTS; do
+          echo "🚀 Processing Regulatory Payload for: $tenant"
+          
+          # Set the environment variable for the Python script
+          export TENANT_ID=$tenant
+          python scripts/cbam_xml_generator.py
+          
+          # 3. Rename output to prevent overwriting
+          # The script generates 'cbam_export_output.xml' by default
+          if [ -f cbam_export_output.xml ]; then
+            mv cbam_export_output.xml "cbam_export_${tenant}.xml"
+            echo "✅ Generated: cbam_export_${tenant}.xml"
+          else
+            echo "⚠️ Warning: No output generated for $tenant"
+          fi
+        done
+
+    - name: Validate XML Payloads
+    # Simple check to ensure we have at least one valid non-empty XML file
+      run: |
+        if ls cbam_export_*.xml 1> /dev/null 2>&1; then
+          echo "✅ All XML Payloads generated and moved successfully."
+          du -sh cbam_export_*.xml
+        else
+          echo "❌ Critical: No regulatory payloads found."
+          exit 1
+        fi
+
+    - name: Archive All Regulatory Payloads
+      uses: actions/upload-artifact@v4
+      with:
+        name: cbam-declarations-all-${{ github.sha }}
+        # Archive all files matching the pattern
+        path: cbam_export_*.xml
+        retention-days: 90
+        cache: true

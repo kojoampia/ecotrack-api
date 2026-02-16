@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Supplier.
+    -->
+    <changeSet id="20240103000001-1" author="jhipster">
+        <createTable tableName="jhi_supplier">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="company_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_email" type="varchar(254)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="industry" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tier" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address" type="clob">
+                <constraints nullable="true"/>
+            </column>
+            <column name="phone" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="website" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="tenant_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="supplier_type_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+        <createIndex indexName="idx_supplier_tenant_id" tableName="jhi_supplier">
+            <column name="tenant_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_supplier_industry" tableName="jhi_supplier">
+            <column name="industry"/>
+        </createIndex>
+
+        <createIndex indexName="idx_supplier_type_id" tableName="jhi_supplier">
+            <column name="supplier_type_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_type_id"
+                                 baseTableName="jhi_supplier"
+                                 constraintName="fk_supplier_supplier_type"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_supplier_type"/>
+    </changeSet>
+
+    <!--
+        Added foreign key relationship from Product to Supplier.
+    -->
+    <changeSet id="20240103000001-2" author="jhipster">
+        <addColumn tableName="jhi_product">
+            <column name="supplier_id" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <createIndex indexName="idx_product_supplier_id" tableName="jhi_product">
+            <column name="supplier_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="supplier_id"
+                                 baseTableName="jhi_product"
+                                 constraintName="fk_product_supplier"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_supplier"/>
+    </changeSet>
+
+</databaseChangeLog>

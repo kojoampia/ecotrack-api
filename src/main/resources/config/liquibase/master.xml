@@ -12,6 +12,18 @@
     <property name="timeType" value="time(6)" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240101000001_added_entity_supplier_type.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240102000001_added_entity_product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240103000001_added_entity_supplier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240104000001_added_entity_importer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000001_added_entity_tenant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000002_added_entity_ai_budget.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000003_added_entity_price_tier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000004_added_emission_record_fields.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000005_added_entity_emission_evidence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260215000001_added_entity_emission_report.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260215000002_added_entity_audit_trail.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260215000003_added_entity_compliance_report.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->

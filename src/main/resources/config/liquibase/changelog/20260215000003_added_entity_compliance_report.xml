@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ComplianceReport.
+    -->
+    <changeSet id="20260215000003-1" author="jhipster">
+        <createTable tableName="compliance_report">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tenant_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emission_report_id" type="varchar(100)"/>
+            <column name="report_type" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reporting_period" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="generated_at" type="timestamp"/>
+            <column name="submitted_at" type="timestamp"/>
+            <column name="submission_reference" type="varchar(100)"/>
+            <column name="total_emissions" type="decimal(21,2)"/>
+            <column name="scope_1_emissions" type="decimal(21,2)"/>
+            <column name="scope_2_emissions" type="decimal(21,2)"/>
+            <column name="scope_3_emissions" type="decimal(21,2)"/>
+            <column name="confidence_level" type="integer"/>
+            <column name="review_notes" type="clob"/>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+        </createTable>
+
+        <createIndex indexName="idx_compliance_report_tenant_id" tableName="compliance_report">
+            <column name="tenant_id"/>
+        </createIndex>
+
+        <createIndex indexName="idx_compliance_report_status" tableName="compliance_report">
+            <column name="status"/>
+        </createIndex>
+
+        <createIndex indexName="idx_compliance_report_type" tableName="compliance_report">
+            <column name="report_type"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

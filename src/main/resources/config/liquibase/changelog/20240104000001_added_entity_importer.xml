@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="20240104000001_added_entity_importer" author="jhipster">
+        <createTable tableName="jhi_importer">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="tenant_id" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="eori_number" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="vat_number" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="sector" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="contact_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="contact_email" type="varchar(254)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="contact_phone" type="varchar(20)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="authorized_representative" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="estimated_annual_import_volume" type="decimal(21,2)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="agreed_to_terms" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_modified_date" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <createIndex indexName="idx_importer_tenant_id" tableName="jhi_importer">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_importer_country" tableName="jhi_importer">
+            <column name="country"/>
+        </createIndex>
+        <createIndex indexName="idx_importer_sector" tableName="jhi_importer">
+            <column name="sector"/>
+        </createIndex>
+        <createIndex indexName="idx_importer_eori_number" tableName="jhi_importer">
+            <column name="eori_number"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
