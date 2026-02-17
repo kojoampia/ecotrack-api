@@ -5,7 +5,7 @@
 
     <groupId>com.ecotrack.api</groupId>
     <artifactId>ecotrack-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>Ecotrack Api</name>
     <description>Description for Ecotrack Api</description>
@@ -651,9 +651,6 @@
                         </from>
                         <to>
                             <image>ecotrackapi:latest</image>
-                            <tags>
-                                <tag>docker.jojoaddison.net/ecotrack-api:2026.01</tag>
-                            </tags>
                         </to>
                         <container>
                             <entrypoint>

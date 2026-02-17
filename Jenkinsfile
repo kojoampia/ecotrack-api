@@ -24,7 +24,6 @@ pipeline {
                     def imageURL = "${imageName}:${env.BUILD_NUMBER}"
                     echo "Building Docker image: ${imageURL}"
                     sh "./mvnw clean package jib:dockerBuild -DskipTests"
-                    sh "docker tag ecotrackapi ${imageURL}"
                 }
             }
         }
@@ -34,9 +33,9 @@ pipeline {
                 script {
                     def imageName = "${REGISTRY}/${IMAGE_NAME}"
                     def imageURL = "${imageName}:${env.BUILD_NUMBER}"
+                    echo "Pushing Docker image: ${imageURL}"
                     withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin https://${REGISTRY}"
-                        sh "docker push ecotrackapi:latest"
                         sh "docker tag ecotrackapi:latest ${imageURL}"
                         sh "docker push ${imageURL}"
                         sh "docker push ${imageName}:latest"
