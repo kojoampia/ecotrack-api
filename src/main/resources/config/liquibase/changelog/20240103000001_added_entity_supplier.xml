@@ -9,8 +9,8 @@
     <!--
         Added the entity Supplier.
     -->
-    <changeSet id="20240103000001-1" author="jhipster">
-        <createTable tableName="jhi_supplier">
+    <changeSet id="20240103000001-1" author="ecopster">
+        <createTable tableName="eco_supplier">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -49,44 +49,44 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_supplier_tenant_id" tableName="jhi_supplier">
+        <createIndex indexName="idx_supplier_tenant_id" tableName="eco_supplier">
             <column name="tenant_id"/>
         </createIndex>
 
-        <createIndex indexName="idx_supplier_industry" tableName="jhi_supplier">
+        <createIndex indexName="idx_supplier_industry" tableName="eco_supplier">
             <column name="industry"/>
         </createIndex>
 
-        <createIndex indexName="idx_supplier_type_id" tableName="jhi_supplier">
+        <createIndex indexName="idx_supplier_type_id" tableName="eco_supplier">
             <column name="supplier_type_id"/>
         </createIndex>
 
         <addForeignKeyConstraint baseColumnNames="supplier_type_id"
-                                 baseTableName="jhi_supplier"
+                                 baseTableName="eco_supplier"
                                  constraintName="fk_supplier_supplier_type"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_supplier_type"/>
+                                 referencedTableName="eco_supplier_type"/>
     </changeSet>
 
     <!--
         Added foreign key relationship from Product to Supplier.
     -->
-    <changeSet id="20240103000001-2" author="jhipster">
-        <addColumn tableName="jhi_product">
+    <changeSet id="20240103000001-2" author="ecopster">
+        <addColumn tableName="eco_product">
             <column name="supplier_id" type="bigint">
                 <constraints nullable="true"/>
             </column>
         </addColumn>
 
-        <createIndex indexName="idx_product_supplier_id" tableName="jhi_product">
+        <createIndex indexName="idx_product_supplier_id" tableName="eco_product">
             <column name="supplier_id"/>
         </createIndex>
 
         <addForeignKeyConstraint baseColumnNames="supplier_id"
-                                 baseTableName="jhi_product"
+                                 baseTableName="eco_product"
                                  constraintName="fk_product_supplier"
                                  referencedColumnNames="id"
-                                 referencedTableName="jhi_supplier"/>
+                                 referencedTableName="eco_supplier"/>
     </changeSet>
 
 </databaseChangeLog>

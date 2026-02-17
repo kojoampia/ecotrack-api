@@ -10,14 +10,15 @@ command -v docker >/dev/null 2>&1 || { echo "❌ Docker not found"; exit 1; }
 # 2. Spin up Infrastructure
 echo "🐳 Starting PostgreSQL and Keycloak..."
 docker-compose -f src/main/docker/postgresql.yml up -d
-docker-compose -f src/main/docker/keycloak.yml up -d
+# We don't use keycloak anymore
+#docker-compose -f src/main/docker/keycloak.yml up -d
 
 # 3. Build & Migrate
 echo "🏗️ Building Spring Boot Backend & Liquibase Migrations..."
 ./mvnw clean compile liquibase:update
 
-# 4. Frontend Install
-echo "📦 Installing Angular Dependencies..."
-npm install
+# 4. Frontend Install - Happens in Frontend Repo
+#echo "📦 Installing Angular Dependencies..."
+#npm install
 
 echo "🚀 Setup Complete! Run './mvnw' to start the backend and 'npm start' for the UI."

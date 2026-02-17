@@ -12,8 +12,8 @@ import org.springframework.boot.info.GitProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.*;
-import tech.jhipster.config.JHipsterProperties;
-import tech.jhipster.config.cache.PrefixedKeyGenerator;
+import tech.ecopster.config.JHipsterProperties;
+import tech.ecopster.config.cache.PrefixedKeyGenerator;
 
 @Configuration
 @EnableCaching
@@ -50,7 +50,7 @@ public class CacheConfiguration {
             createCache(cm, com.ecotrack.api.domain.User.class.getName());
             createCache(cm, com.ecotrack.api.domain.Authority.class.getName());
             createCache(cm, com.ecotrack.api.domain.User.class.getName() + ".authorities");
-            // jhipster-needle-ehcache-add-entry
+            // ecopster-needle-ehcache-add-entry
         };
     }
 

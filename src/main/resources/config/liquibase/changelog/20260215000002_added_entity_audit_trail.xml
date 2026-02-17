@@ -9,7 +9,7 @@
     <!--
         Added the entity AuditTrail.
     -->
-    <changeSet id="20260215000002-1" author="jhipster">
+    <changeSet id="20260215000002-1" author="ecopster">
         <createTable tableName="audit_trail">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

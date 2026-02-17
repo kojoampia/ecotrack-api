@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tech.jhipster.web.util.HeaderUtil;
-import tech.jhipster.web.util.ResponseUtil;
+import tech.ecopster.web.util.HeaderUtil;
+import tech.ecopster.web.util.ResponseUtil;
 
 /**
  * REST controller for managing {@link com.ecotrack.api.domain.Tenant}.
@@ -28,7 +28,7 @@ public class TenantResource {
 
     private static final String ENTITY_NAME = "tenant";
 
-    @Value("${jhipster.clientApp.name}")
+    @Value("${ecopster.clientApp.name}")
     private String applicationName;
 
     private final TenantService tenantService;

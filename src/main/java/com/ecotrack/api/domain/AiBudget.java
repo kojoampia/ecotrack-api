@@ -18,7 +18,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * An AiBudget.
  */
 @Entity
-@Table(name = "jhi_ai_budget")
+@Table(name = "eco_ai_budget")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class AiBudget extends AbstractAuditingEntity<Long> implements Serializable {
 

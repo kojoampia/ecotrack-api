@@ -10,7 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A SupplierType.
  */
 @Entity
-@Table(name = "jhi_supplier_type")
+@Table(name = "eco_supplier_type")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class SupplierType extends AbstractAuditingEntity<Long> implements Serializable {
 

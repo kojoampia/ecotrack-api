@@ -13,7 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A Product.
  */
 @Entity
-@Table(name = "jhi_product")
+@Table(name = "eco_product")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends AbstractAuditingEntity<Long> implements Serializable {
 
@@ -49,6 +49,9 @@ public class Product extends AbstractAuditingEntity<Long> implements Serializabl
 
     @Column(name = "product_last_modified_date")
     private Instant productLastModifiedDate;
+
+    @Column(name = "tenant_id", length = 100)
+    private String tenantId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
@@ -142,6 +145,19 @@ public class Product extends AbstractAuditingEntity<Long> implements Serializabl
 
     public void setProductLastModifiedDate(Instant productLastModifiedDate) {
         this.productLastModifiedDate = productLastModifiedDate;
+    }
+
+    public String getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(String tenantId) {
+        this.tenantId = tenantId;
+    }
+
+    public Product tenantId(String tenantId) {
+        this.setTenantId(tenantId);
+        return this;
     }
 
     // equals and hashCode

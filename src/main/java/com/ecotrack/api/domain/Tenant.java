@@ -17,7 +17,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A Tenant.
  */
 @Entity
-@Table(name = "jhi_tenant")
+@Table(name = "eco_tenant")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Tenant extends AbstractAuditingEntity<String> implements Serializable {
 

@@ -7,3 +7,17 @@ The Logic: A TenantFilter in Spring Boot extracts the tenant_id from the JWT and
 SET app.current_tenant = 'company_abc_123';
 
 To make this work seamlessly with Spring Data JPA, we use a TenantContext to pass the tenant_id from the JWT directly into the Postgres session.
+
+TenantInterceptor.java
+@Component
+public class TenantInterceptor implements HandlerInterceptor {
+@Override
+public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+String tenantId = SecurityUtils.getTenantIdFromJwt(); // Extract from Spring Security context
+try (Connection conn = dataSource.getConnection();
+Statement stmt = conn.createStatement()) {
+stmt.execute("SET app.current_tenant = '" + tenantId + "'");
+}
+return true;
+}
+}

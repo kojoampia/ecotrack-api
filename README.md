@@ -1,6 +1,6 @@
 # ecotrackApi
 
-This application was generated using JHipster 8.11.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.11.0](https://www.jhipster.tech/documentation-archive/v8.11.0).
+This application was generated using JHipster 8.11.0, you can find documentation and help at [https://www.ecopster.tech/documentation-archive/v8.11.0](https://www.ecopster.tech/documentation-archive/v8.11.0).
 
 ## Project Structure
 
@@ -11,10 +11,10 @@ In the project root, JHipster generates configuration files for tools like git, 
 `/src/*` structure follows default Java structure.
 
 - `.yo-rc.json` - Yeoman configuration file
-  JHipster configuration is stored in this file at `generator-jhipster` key. You may find `generator-jhipster-*` for specific blueprints configuration.
+  JHipster configuration is stored in this file at `generator-ecopster` key. You may find `generator-ecopster-*` for specific blueprints configuration.
 - `.yo-resolve` (optional) - Yeoman conflict resolver
   Allows to use a specific action when conflicts are found skipping prompts for files that matches a pattern. Each line should match `[pattern] [action]` with pattern been a [Minimatch](https://github.com/isaacs/minimatch#minimatch) pattern and action been one of skip (default if omitted) or force. Lines starting with `#` are considered comments and are ignored.
-- `.jhipster/*.json` - JHipster entity configuration files
+- `.ecopster/*.json` - JHipster entity configuration files
 - `/src/main/docker` - Docker configurations for the application and services that the application depends on
 
 ## Development
@@ -43,6 +43,20 @@ To ensure everything worked, run:
 java -jar target/*.jar
 ```
 
+### Docker image
+
+To build the production image using the provided Dockerfile, run:
+
+```
+docker build -t ecotrack-api .
+```
+
+Then run the container:
+
+```
+docker run --rm -p 8080:8080 ecotrack-api
+```
+
 Refer to [Using JHipster in production][] for more details.
 
 ### Packaging as war
@@ -58,7 +72,7 @@ To package your application as a war in order to deploy it to an application ser
 JHipster Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
 
 ```
-docker compose -f src/main/docker/jhipster-control-center.yml up
+docker compose -f src/main/docker/ecopster-control-center.yml up
 ```
 
 ## Testing
@@ -151,19 +165,19 @@ Then run:
 docker compose -f src/main/docker/app.yml up -d
 ```
 
-For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the Docker Compose sub-generator (`jhipster docker-compose`), which is able to generate Docker configurations for one or several JHipster applications.
+For more information refer to [Using Docker and Docker-Compose][], this page also contains information on the Docker Compose sub-generator (`ecopster docker-compose`), which is able to generate Docker configurations for one or several JHipster applications.
 
 ## Continuous Integration (optional)
 
-To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
+To configure CI for your project, run the ci-cd sub-generator (`ecopster ci-cd`), this will let you generate configuration files for a number of Continuous Integration systems. Consult the [Setting up Continuous Integration][] page for more information.
 
-[JHipster Homepage and latest documentation]: https://www.jhipster.tech
-[JHipster 8.11.0 archive]: https://www.jhipster.tech/documentation-archive/v8.11.0
-[Using JHipster in development]: https://www.jhipster.tech/documentation-archive/v8.11.0/development/
-[Using Docker and Docker-Compose]: https://www.jhipster.tech/documentation-archive/v8.11.0/docker-compose
-[Using JHipster in production]: https://www.jhipster.tech/documentation-archive/v8.11.0/production/
-[Running tests page]: https://www.jhipster.tech/documentation-archive/v8.11.0/running-tests/
-[Code quality page]: https://www.jhipster.tech/documentation-archive/v8.11.0/code-quality/
-[Setting up Continuous Integration]: https://www.jhipster.tech/documentation-archive/v8.11.0/setting-up-ci/
+[JHipster Homepage and latest documentation]: https://www.ecopster.tech
+[JHipster 8.11.0 archive]: https://www.ecopster.tech/documentation-archive/v8.11.0
+[Using JHipster in development]: https://www.ecopster.tech/documentation-archive/v8.11.0/development/
+[Using Docker and Docker-Compose]: https://www.ecopster.tech/documentation-archive/v8.11.0/docker-compose
+[Using JHipster in production]: https://www.ecopster.tech/documentation-archive/v8.11.0/production/
+[Running tests page]: https://www.ecopster.tech/documentation-archive/v8.11.0/running-tests/
+[Code quality page]: https://www.ecopster.tech/documentation-archive/v8.11.0/code-quality/
+[Setting up Continuous Integration]: https://www.ecopster.tech/documentation-archive/v8.11.0/setting-up-ci/
 [Node.js]: https://nodejs.org/
 [NPM]: https://www.npmjs.com/

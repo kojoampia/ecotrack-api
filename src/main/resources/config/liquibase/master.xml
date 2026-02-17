@@ -24,7 +24,9 @@
     <include file="config/liquibase/changelog/20260215000001_added_entity_emission_report.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260215000002_added_entity_audit_trail.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260215000003_added_entity_compliance_report.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
-    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20260216000001_add_rls_multi_tenancy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20260217000001_added_entity_lead.xml" relativeToChangelogFile="false"/>
+    <!-- ecopster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <!-- ecopster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- ecopster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

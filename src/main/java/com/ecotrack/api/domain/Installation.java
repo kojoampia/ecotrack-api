@@ -41,7 +41,7 @@ public class Installation extends AbstractAuditingEntity implements Serializable
     @JsonIgnoreProperties(value = { "installations", "products" }, allowSetters = true)
     private Supplier supplier;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    // ecopster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
@@ -121,7 +121,7 @@ public class Installation extends AbstractAuditingEntity implements Serializable
         this.supplier = supplier;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+    // ecopster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
     public boolean equals(Object o) {

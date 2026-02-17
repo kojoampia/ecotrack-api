@@ -22,7 +22,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A PriceTier.
  */
 @Entity
-@Table(name = "jhi_price_tier")
+@Table(name = "eco_price_tier")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class PriceTier extends AbstractAuditingEntity<Long> implements Serializable {
 
@@ -50,7 +50,7 @@ public class PriceTier extends AbstractAuditingEntity<Long> implements Serializa
     private String billingCycle;
 
     @ElementCollection
-    @CollectionTable(name = "jhi_price_tier_features", joinColumns = @JoinColumn(name = "price_tier_id"))
+    @CollectionTable(name = "eco_price_tier_features", joinColumns = @JoinColumn(name = "price_tier_id"))
     @Column(name = "feature", length = 255)
     private Set<String> features = new HashSet<>();
 

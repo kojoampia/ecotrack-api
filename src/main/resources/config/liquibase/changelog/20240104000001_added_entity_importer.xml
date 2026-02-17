@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="20240104000001_added_entity_importer" author="jhipster">
-        <createTable tableName="jhi_importer">
+    <changeSet id="20240104000001_added_entity_importer" author="ecopster">
+        <createTable tableName="eco_importer">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -62,16 +62,16 @@
                 <constraints nullable="true"/>
             </column>
         </createTable>
-        <createIndex indexName="idx_importer_tenant_id" tableName="jhi_importer">
+        <createIndex indexName="idx_importer_tenant_id" tableName="eco_importer">
             <column name="tenant_id"/>
         </createIndex>
-        <createIndex indexName="idx_importer_country" tableName="jhi_importer">
+        <createIndex indexName="idx_importer_country" tableName="eco_importer">
             <column name="country"/>
         </createIndex>
-        <createIndex indexName="idx_importer_sector" tableName="jhi_importer">
+        <createIndex indexName="idx_importer_sector" tableName="eco_importer">
             <column name="sector"/>
         </createIndex>
-        <createIndex indexName="idx_importer_eori_number" tableName="jhi_importer">
+        <createIndex indexName="idx_importer_eori_number" tableName="eco_importer">
             <column name="eori_number"/>
         </createIndex>
     </changeSet>

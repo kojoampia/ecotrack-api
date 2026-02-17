@@ -13,7 +13,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A Importer.
  */
 @Entity
-@Table(name = "jhi_importer")
+@Table(name = "eco_importer")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Importer extends AbstractAuditingEntity<Long> implements Serializable {
 

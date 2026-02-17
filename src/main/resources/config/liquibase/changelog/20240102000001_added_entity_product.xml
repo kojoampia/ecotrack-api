@@ -9,8 +9,8 @@
     <!--
         Added the entity Product.
     -->
-    <changeSet id="20240102000001-1" author="jhipster">
-        <createTable tableName="jhi_product">
+    <changeSet id="20240102000001-1" author="ecopster">
+        <createTable tableName="eco_product">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -46,11 +46,11 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_product_category" tableName="jhi_product">
+        <createIndex indexName="idx_product_category" tableName="eco_product">
             <column name="category"/>
         </createIndex>
 
-        <createIndex indexName="idx_product_sku" tableName="jhi_product">
+        <createIndex indexName="idx_product_sku" tableName="eco_product">
             <column name="sku"/>
         </createIndex>
     </changeSet>

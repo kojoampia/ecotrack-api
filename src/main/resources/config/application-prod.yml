@@ -3,8 +3,8 @@
 #
 # This configuration overrides the application.yml file.
 #
-# More information on profiles: https://www.jhipster.tech/profiles/
-# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# More information on profiles: https://www.ecopster.tech/profiles/
+# More information on configuration properties: https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
 # ===================================================================
@@ -16,7 +16,7 @@
 logging:
   level:
     ROOT: INFO
-    tech.jhipster: INFO
+    tech.ecopster: INFO
     com.ecotrack.api: INFO
 
 management:
@@ -80,10 +80,10 @@ server:
 # ===================================================================
 # JHipster specific properties
 #
-# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# Full reference is available at: https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
-jhipster:
+ecopster:
   http:
     cache: # Used by the CachingHttpHeadersFilter
       timeToLiveInDays: 1461
@@ -118,7 +118,7 @@ jhipster:
 # to have type-safe configuration, like in the JHipsterProperties above
 #
 # More documentation is available at:
-# https://www.jhipster.tech/common-application-properties/
+# https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
 # application:

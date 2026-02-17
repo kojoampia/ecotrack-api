@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Multi-Tenancy Row-Level Security (RLS) Implementation
+        
+        This migration adds tenant_id columns to tables that don't have them yet
+        and enables PostgreSQL Row-Level Security policies to enforce tenant isolation
+        at the database layer.
+    -->
+
+    <!-- Add tenant_id to eco_product table -->
+    <changeSet id="20260216000001-1" author="ecopster">
+        <addColumn tableName="eco_product">
+            <column name="tenant_id" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <!-- Add indexes for tenant_id on all multi-tenant tables -->
+    <changeSet id="20260216000001-2" author="ecopster">
+        <createIndex indexName="idx_product_tenant_id" tableName="eco_product">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_supplier_tenant_id" tableName="eco_supplier">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_importer_tenant_id" tableName="eco_importer">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_installation_tenant_id" tableName="installation">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_emission_record_tenant_id" tableName="emission_record">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_emission_report_tenant_id" tableName="emission_report">
+            <column name="tenant_id"/>
+        </createIndex>
+        <createIndex indexName="idx_compliance_report_tenant_id" tableName="compliance_report">
+            <column name="tenant_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- Enable Row-Level Security on multi-tenant tables -->
+    <changeSet id="20260216000001-3" author="ecopster">
+        <sql dbms="postgresql">
+            -- Enable RLS on all multi-tenant tables
+            ALTER TABLE eco_product ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE eco_supplier ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE eco_importer ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE installation ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE emission_record ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE emission_report ENABLE ROW LEVEL SECURITY;
+            ALTER TABLE compliance_report ENABLE ROW LEVEL SECURITY;
+        </sql>
+        <rollback>
+            ALTER TABLE eco_product DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE eco_supplier DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE eco_importer DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE installation DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE emission_record DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE emission_report DISABLE ROW LEVEL SECURITY;
+            ALTER TABLE compliance_report DISABLE ROW LEVEL SECURITY;
+        </rollback>
+    </changeSet>
+
+    <!-- Create RLS policies for SELECT operations -->
+    <changeSet id="20260216000001-4" author="ecopster">
+        <sql dbms="postgresql">
+            -- Product RLS policy
+            CREATE POLICY tenant_isolation_policy_product ON eco_product
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- Supplier RLS policy
+            CREATE POLICY tenant_isolation_policy_supplier ON eco_supplier
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- Importer RLS policy
+            CREATE POLICY tenant_isolation_policy_importer ON eco_importer
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- Installation RLS policy
+            CREATE POLICY tenant_isolation_policy_installation ON installation
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- EmissionRecord RLS policy
+            CREATE POLICY tenant_isolation_policy_emission_record ON emission_record
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- EmissionReport RLS policy
+            CREATE POLICY tenant_isolation_policy_emission_report ON emission_report
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+
+            -- ComplianceReport RLS policy
+            CREATE POLICY tenant_isolation_policy_compliance_report ON compliance_report
+                FOR ALL
+                USING (tenant_id = current_setting('app.current_tenant', true));
+        </sql>
+        <rollback>
+            DROP POLICY IF EXISTS tenant_isolation_policy_product ON eco_product;
+            DROP POLICY IF EXISTS tenant_isolation_policy_supplier ON eco_supplier;
+            DROP POLICY IF EXISTS tenant_isolation_policy_importer ON eco_importer;
+            DROP POLICY IF EXISTS tenant_isolation_policy_installation ON installation;
+            DROP POLICY IF EXISTS tenant_isolation_policy_emission_record ON emission_record;
+            DROP POLICY IF EXISTS tenant_isolation_policy_emission_report ON emission_report;
+            DROP POLICY IF EXISTS tenant_isolation_policy_compliance_report ON compliance_report;
+        </rollback>
+    </changeSet>
+
+    <!-- Create bypass policy for database owner/admin (optional, for migrations and admin access) -->
+    <changeSet id="20260216000001-5" author="ecopster">
+        <sql dbms="postgresql">
+            -- Allow database owner to bypass RLS (for migrations and admin operations)
+            -- This is optional but recommended for easier database administration
+            
+            CREATE POLICY tenant_isolation_bypass_product ON eco_product
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_supplier ON eco_supplier
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_importer ON eco_importer
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_installation ON installation
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_emission_record ON emission_record
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_emission_report ON emission_report
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+
+            CREATE POLICY tenant_isolation_bypass_compliance_report ON compliance_report
+                FOR ALL
+                TO CURRENT_USER
+                USING (true)
+                WITH CHECK (true);
+        </sql>
+        <rollback>
+            DROP POLICY IF EXISTS tenant_isolation_bypass_product ON eco_product;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_supplier ON eco_supplier;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_importer ON eco_importer;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_installation ON installation;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_emission_record ON emission_record;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_emission_report ON emission_report;
+            DROP POLICY IF EXISTS tenant_isolation_bypass_compliance_report ON compliance_report;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

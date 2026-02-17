@@ -40,10 +40,10 @@ public class AuthenticateController {
 
     private final JwtEncoder jwtEncoder;
 
-    @Value("${jhipster.security.authentication.jwt.token-validity-in-seconds:0}")
+    @Value("${ecopster.security.authentication.jwt.token-validity-in-seconds:0}")
     private long tokenValidityInSeconds;
 
-    @Value("${jhipster.security.authentication.jwt.token-validity-in-seconds-for-remember-me:0}")
+    @Value("${ecopster.security.authentication.jwt.token-validity-in-seconds-for-remember-me:0}")
     private long tokenValidityInSecondsForRememberMe;
 
     private final AuthenticationManagerBuilder authenticationManagerBuilder;

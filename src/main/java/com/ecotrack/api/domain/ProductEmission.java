@@ -11,7 +11,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
  * A ProductEmission.
  */
 @Entity
-@Table(name = "jhi_product_emission")
+@Table(name = "eco_product_emission")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ProductEmission extends AbstractAuditingEntity<Long> implements Serializable {
 

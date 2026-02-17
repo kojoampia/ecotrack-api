@@ -9,8 +9,8 @@
     <!--
         Added the entity SupplierType.
     -->
-    <changeSet id="20240101000001-1" author="jhipster">
-        <createTable tableName="jhi_supplier_type">
+    <changeSet id="20240101000001-1" author="ecopster">
+        <createTable tableName="eco_supplier_type">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -34,11 +34,11 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_supplier_type_tenant_id" tableName="jhi_supplier_type">
+        <createIndex indexName="idx_supplier_type_tenant_id" tableName="eco_supplier_type">
             <column name="tenant_id"/>
         </createIndex>
 
-        <createIndex indexName="idx_supplier_type_category" tableName="jhi_supplier_type">
+        <createIndex indexName="idx_supplier_type_category" tableName="eco_supplier_type">
             <column name="category"/>
         </createIndex>
     </changeSet>

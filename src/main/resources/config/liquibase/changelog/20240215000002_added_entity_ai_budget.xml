@@ -9,8 +9,8 @@
     <!--
         Added the entity AiBudget.
     -->
-    <changeSet id="20240215000002-1" author="jhipster">
-        <createTable tableName="jhi_ai_budget">
+    <changeSet id="20240215000002-1" author="ecopster">
+        <createTable tableName="eco_ai_budget">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -29,7 +29,7 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_ai_budget_tenant_id" tableName="jhi_ai_budget">
+        <createIndex indexName="idx_ai_budget_tenant_id" tableName="eco_ai_budget">
             <column name="tenant_id"/>
         </createIndex>
     </changeSet>

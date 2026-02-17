@@ -9,7 +9,7 @@
     <!--
         Added the entity EmissionReport.
     -->
-    <changeSet id="20260215000001-1" author="jhipster">
+    <changeSet id="20260215000001-1" author="ecopster">
         <createTable tableName="emission_report">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -42,7 +42,7 @@
     <!--
         Add report_id foreign key to emission_record
     -->
-    <changeSet id="20260215000001-2" author="jhipster">
+    <changeSet id="20260215000001-2" author="ecopster">
         <addColumn tableName="emission_record">
             <column name="report_id" type="bigint"/>
         </addColumn>
@@ -59,7 +59,7 @@
     <!--
         Add report_id foreign key to emission_evidence
     -->
-    <changeSet id="20260215000001-3" author="jhipster">
+    <changeSet id="20260215000001-3" author="ecopster">
         <addColumn tableName="emission_evidence">
             <column name="report_id" type="bigint"/>
         </addColumn>

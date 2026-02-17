@@ -4,7 +4,7 @@ services:
   postgresql:
     image: postgres:17.4
     # volumes:
-    #   - ~/volumes/jhipster/ecotrackApi/postgresql/:/var/lib/postgresql/data/
+    #   - ~/volumes/ecopster/ecotrackApi/postgresql/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=ecotrackApi
       - POSTGRES_HOST_AUTH_METHOD=trust

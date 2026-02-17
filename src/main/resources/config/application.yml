@@ -4,8 +4,8 @@
 # This configuration will be overridden by the Spring profile you use,
 # for example application-dev.yml if you use the "dev" profile.
 #
-# More information on profiles: https://www.jhipster.tech/profiles/
-# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# More information on profiles: https://www.ecopster.tech/profiles/
+# More information on configuration properties: https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
 # ===================================================================
@@ -34,8 +34,8 @@ management:
           - env
           - health
           - info
-          - jhimetrics
-          - jhiopenapigroups
+          - ecometrics
+          - ecoopenapigroups
           - logfile
           - loggers
           - prometheus
@@ -53,7 +53,7 @@ management:
           include: livenessState
         readiness:
           include: readinessState,db
-    jhimetrics:
+    ecometrics:
       enabled: true
   info:
     git:
@@ -184,10 +184,10 @@ info:
 # ===================================================================
 # JHipster specific properties
 #
-# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# Full reference is available at: https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
-jhipster:
+ecopster:
   clientApp:
     name: 'ecotrackApiApp'
   # By default CORS is disabled. Uncomment to enable.
@@ -195,7 +195,7 @@ jhipster:
   #   allowed-origins: "http://localhost:8100,http://localhost:9000"
   #   allowed-methods: "*"
   #   allowed-headers: "*"
-  #   exposed-headers: "Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params"
+  #   exposed-headers: "Authorization,Link,X-Total-Count,X-${ecopster.clientApp.name}-alert,X-${ecopster.clientApp.name}-error,X-${ecopster.clientApp.name}-params"
   #   allow-credentials: true
   #   max-age: 1800
   mail:
@@ -214,7 +214,7 @@ jhipster:
     license-url:
   security:
 
-# jhipster-needle-add-application-yaml-document
+# ecopster-needle-add-application-yaml-document
 ---
 # ===================================================================
 # Application specific properties
@@ -222,7 +222,7 @@ jhipster:
 # to have type-safe configuration, like in the JHipsterProperties above
 #
 # More documentation is available at:
-# https://www.jhipster.tech/common-application-properties/
+# https://www.ecopster.tech/common-application-properties/
 # ===================================================================
 
 # application:

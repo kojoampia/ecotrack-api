@@ -9,8 +9,8 @@
     <!--
         Added the entity Tenant.
     -->
-    <changeSet id="20240215000001-1" author="jhipster">
-        <createTable tableName="jhi_tenant">
+    <changeSet id="20240215000001-1" author="ecopster">
+        <createTable tableName="eco_tenant">
             <column name="id" type="varchar(100)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -31,7 +31,7 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_tenant_industry" tableName="jhi_tenant">
+        <createIndex indexName="idx_tenant_industry" tableName="eco_tenant">
             <column name="industry"/>
         </createIndex>
     </changeSet>
