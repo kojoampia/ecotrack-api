@@ -9,7 +9,7 @@
     <!--
         Added the entity ComplianceReport.
     -->
-    <changeSet id="20260215000003-1" author="jhipster">
+    <changeSet id="20260215000003-1" author="ecotracker">
         <createTable tableName="compliance_report">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

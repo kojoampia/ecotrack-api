@@ -9,7 +9,7 @@
     <!--
         Added the entity Supplier.
     -->
-    <changeSet id="20240103000001-1" author="jhipster">
+    <changeSet id="20240103000001-1" author="ecotracker">
         <createTable tableName="eco_supplier">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
@@ -71,7 +71,7 @@
     <!--
         Added foreign key relationship from Product to Supplier.
     -->
-    <changeSet id="20240103000001-2" author="jhipster">
+    <changeSet id="20240103000001-2" author="ecotracker">
         <addColumn tableName="eco_product">
             <column name="supplier_id" type="bigint">
                 <constraints nullable="true"/>
