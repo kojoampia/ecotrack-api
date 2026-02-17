@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
-import tech.ecopster.config.JHipsterProperties;
+import tech.jhipster.config.JHipsterProperties;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)

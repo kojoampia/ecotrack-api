@@ -15,7 +15,7 @@ import org.springframework.mock.env.MockEnvironment;
 import org.springframework.mock.web.MockServletContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import tech.ecopster.config.JHipsterProperties;
+import tech.jhipster.config.JHipsterProperties;
 
 /**
  * Unit tests for the {@link WebConfigurer} class.

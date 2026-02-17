@@ -29,7 +29,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import tech.ecopster.config.JHipsterProperties;
+import tech.jhipster.config.JHipsterProperties;
 
 /**
  * Integration tests for {@link MailService}.

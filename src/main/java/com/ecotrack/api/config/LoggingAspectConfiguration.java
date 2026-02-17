@@ -3,7 +3,7 @@ package com.ecotrack.api.config;
 import com.ecotrack.api.aop.logging.LoggingAspect;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
-import tech.ecopster.config.JHipsterConstants;
+import tech.jhipster.config.JHipsterConstants;
 
 @Configuration
 @EnableAspectJAutoProxy

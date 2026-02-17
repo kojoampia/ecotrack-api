@@ -33,10 +33,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import tech.ecopster.config.JHipsterConstants;
-import tech.ecopster.web.rest.errors.ProblemDetailWithCause;
-import tech.ecopster.web.rest.errors.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
-import tech.ecopster.web.util.HeaderUtil;
+import tech.jhipster.config.JHipsterConstants;
+import tech.jhipster.web.rest.errors.ProblemDetailWithCause;
+import tech.jhipster.web.rest.errors.ProblemDetailWithCause.ProblemDetailWithCauseBuilder;
+import tech.jhipster.web.util.HeaderUtil;
 
 /**
  * Controller advice to translate the server side exceptions to client-friendly json structures.

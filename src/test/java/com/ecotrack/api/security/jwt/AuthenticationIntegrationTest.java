@@ -10,7 +10,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.boot.test.context.SpringBootTest;
-import tech.ecopster.config.JHipsterProperties;
+import tech.jhipster.config.JHipsterProperties;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

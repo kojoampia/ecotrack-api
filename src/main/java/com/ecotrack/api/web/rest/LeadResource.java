@@ -15,7 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import tech.ecopster.web.util.HeaderUtil;
+import tech.jhipster.web.util.HeaderUtil;
 
 /**
  * REST controller for managing {@link com.ecotrack.api.domain.Lead}.

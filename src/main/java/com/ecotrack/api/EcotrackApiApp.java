@@ -16,8 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.core.env.Environment;
-import tech.ecopster.config.DefaultProfileUtil;
-import tech.ecopster.config.JHipsterConstants;
+import tech.jhipster.config.DefaultProfileUtil;
+import tech.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })

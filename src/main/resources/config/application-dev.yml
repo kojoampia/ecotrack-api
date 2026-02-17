@@ -16,7 +16,7 @@
 logging:
   level:
     ROOT: DEBUG
-    tech.ecopster: DEBUG
+    tech.jhipster: DEBUG
     org.hibernate.SQL: DEBUG
     com.ecotrack.api: DEBUG
 

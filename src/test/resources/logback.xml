@@ -6,7 +6,7 @@
 
     <logger name="com.ecotrack.api" level="INFO"/>
 
-    <logger name="tech.ecopster" level="WARN"/>
+    <logger name="tech.jhipster" level="WARN"/>
 
     <!-- https://www.testcontainers.org/supported_docker_environment/logging_config/ -->
     <logger name="org.testcontainers" level="INFO"/>

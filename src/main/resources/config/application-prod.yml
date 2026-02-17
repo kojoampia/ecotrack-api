@@ -16,7 +16,7 @@
 logging:
   level:
     ROOT: INFO
-    tech.ecopster: INFO
+    tech.jhipster: INFO
     com.ecotrack.api: INFO
 
 management:
