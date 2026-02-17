@@ -651,6 +651,9 @@
                         </from>
                         <to>
                             <image>ecotrackapi:latest</image>
+                            <tags>
+                                <tag>docker.jojoaddison.net/ecotrack-api:2026.01</tag>
+                            </tags>
                         </to>
                         <container>
                             <entrypoint>

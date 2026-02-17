@@ -17,26 +17,28 @@ pipeline {
     }
 
     stages {
-        /**
-            stage('Checkout') {
-                steps {
-                    git url: 'https://github.com/kojoampia/kojo-stack.git',
-                    branch: 'main',
-                    credentialsId: GIT_CREDENTIALS_ID
-                }
-            }
-        */
-        stage('Build and Push Docker Image') {
+        stage('Build Docker Image with Jib') {
             steps {
                 script {
                     def imageName = "${REGISTRY}/${IMAGE_NAME}"
                     def imageURL = "${imageName}:${env.BUILD_NUMBER}"
-                    echo "${imageURL}"
-                    sh "docker build -t ${imageName}:${env.BUILD_NUMBER} ."
+                    echo "Building Docker image: ${imageURL}"
+                    sh "./mvnw clean package jib:dockerBuild -DskipTests"
+                    sh "docker tag ecotrackapi ${imageURL}"
+                }
+            }
+        }
+        
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    def imageName = "${REGISTRY}/${IMAGE_NAME}"
+                    def imageURL = "${imageName}:${env.BUILD_NUMBER}"
                     withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin https://${REGISTRY}"
-                        sh "docker push ${imageName}:${env.BUILD_NUMBER}"
-                        sh "docker tag ${imageName}:${env.BUILD_NUMBER} ${imageName}:latest"
+                        sh "docker push ecotrackapi:latest"
+                        sh "docker tag ecotrackapi:latest ${imageURL}"
+                        sh "docker push ${imageURL}"
                         sh "docker push ${imageName}:latest"
                     }
                 }
