@@ -13,13 +13,13 @@ public class ApplicationProperties {
 
     private final Liquibase liquibase = new Liquibase();
 
-    // ecopster-needle-application-properties-property
+    // jhipster-needle-application-properties-property
 
     public Liquibase getLiquibase() {
         return liquibase;
     }
 
-    // ecopster-needle-application-properties-property-getter
+    // jhipster-needle-application-properties-property-getter
 
     public static class Liquibase {
 
@@ -33,5 +33,5 @@ public class ApplicationProperties {
             this.asyncStart = asyncStart;
         }
     }
-    // ecopster-needle-application-properties-property-class
+    // jhipster-needle-application-properties-property-class
 }

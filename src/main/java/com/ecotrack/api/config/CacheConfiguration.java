@@ -50,7 +50,7 @@ public class CacheConfiguration {
             createCache(cm, com.ecotrack.api.domain.User.class.getName());
             createCache(cm, com.ecotrack.api.domain.Authority.class.getName());
             createCache(cm, com.ecotrack.api.domain.User.class.getName() + ".authorities");
-            // ecopster-needle-ehcache-add-entry
+            // jhipster-needle-ehcache-add-entry
         };
     }
 

@@ -34,7 +34,7 @@ public class ComplianceReportResource {
 
     private static final String ENTITY_NAME = "complianceReport";
 
-    @Value("${ecopster.clientApp.name}")
+    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final ComplianceReportService complianceReportService;

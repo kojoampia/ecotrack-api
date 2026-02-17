@@ -28,7 +28,7 @@ public class LeadResource {
 
     private static final String ENTITY_NAME = "lead";
 
-    @Value("${ecopster.clientApp.name}")
+    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final LeadService leadService;

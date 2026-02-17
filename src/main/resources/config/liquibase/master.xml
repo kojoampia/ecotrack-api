@@ -19,6 +19,7 @@
     <include file="config/liquibase/changelog/20240215000001_added_entity_tenant.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240215000002_added_entity_ai_budget.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240215000003_added_entity_price_tier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240215000000_added_entity_emission_record.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240215000004_added_emission_record_fields.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240215000005_added_entity_emission_evidence.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260215000001_added_entity_emission_report.xml" relativeToChangelogFile="false"/>
@@ -26,7 +27,7 @@
     <include file="config/liquibase/changelog/20260215000003_added_entity_compliance_report.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260216000001_add_rls_multi_tenancy.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20260217000001_added_entity_lead.xml" relativeToChangelogFile="false"/>
-    <!-- ecopster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
-    <!-- ecopster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
-    <!-- ecopster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

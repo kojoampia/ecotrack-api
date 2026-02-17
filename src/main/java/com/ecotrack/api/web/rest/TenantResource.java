@@ -28,7 +28,7 @@ public class TenantResource {
 
     private static final String ENTITY_NAME = "tenant";
 
-    @Value("${ecopster.clientApp.name}")
+    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final TenantService tenantService;

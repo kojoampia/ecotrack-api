@@ -354,7 +354,7 @@ RLS works with connection pools because we use `SET LOCAL` which only affects th
 - [PostgreSQL Row Security Policies](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
 - [Spring Security Filter Chain](https://docs.spring.io/spring-security/reference/servlet/architecture.html)
 - [Reactor Context](https://projectreactor.io/docs/core/release/reference/#context)
-- [JHipster Security](https://www.ecopster.tech/security/)
+- [JHipster Security](https://www.jhipster.tech/security/)
 
 ## Demo Tenants
 

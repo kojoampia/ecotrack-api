@@ -7,10 +7,10 @@
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog-ext.xsd">
 
     <!--
-        Added the entity EmissionEvidence.
+        Added the entity EmissionRecord.
     -->
-    <changeSet id="20240215000005-1" author="jhipster">
-        <createTable tableName="emission_evidence">
+    <changeSet id="20240215000000-1" author="jhipster">
+        <createTable tableName="emission_record">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -18,19 +18,19 @@
                 <constraints nullable="false"/>
             </column>
             <column name="supplier_id" type="varchar(100)"/>
-            <column name="evidence_type" type="varchar(50)">
+            <column name="scope" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="file_name" type="varchar(255)"/>
-            <column name="file_path" type="clob"/>
-            <column name="file_size" type="bigint"/>
-            <column name="mime_type" type="varchar(100)"/>
-            <column name="checksum" type="varchar(64)"/>
-            <column name="uploaded_at" type="timestamp"/>
+            <column name="carbon_grams" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_recorded" type="date"/>
+            <column name="source" type="clob"/>
+            <column name="notes" type="clob"/>
             <column name="verified" type="boolean"/>
-            <column name="verification_notes" type="clob"/>
-            <column name="retention_period" type="integer"/>
-            <column name="legal_reference" type="clob"/>
+            <column name="confidence_score" type="integer"/>
+            <column name="calculation_method" type="clob"/>
+            <column name="uncertainty_factor" type="numeric(21,4)"/>
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
@@ -39,17 +39,16 @@
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
 
-        <createIndex indexName="idx_emission_evidence_tenant_id" tableName="emission_evidence">
+        <createIndex indexName="idx_emission_record_tenant_id" tableName="emission_record">
             <column name="tenant_id"/>
         </createIndex>
 
-        <createIndex indexName="idx_emission_evidence_supplier_id" tableName="emission_evidence">
+        <createIndex indexName="idx_emission_record_supplier_id" tableName="emission_record">
             <column name="supplier_id"/>
         </createIndex>
 
-        <createIndex indexName="idx_emission_evidence_type" tableName="emission_evidence">
-            <column name="evidence_type"/>
+        <createIndex indexName="idx_emission_record_scope" tableName="emission_record">
+            <column name="scope"/>
         </createIndex>
     </changeSet>
-
 </databaseChangeLog>

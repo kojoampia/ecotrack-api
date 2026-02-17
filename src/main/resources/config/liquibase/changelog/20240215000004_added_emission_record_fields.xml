@@ -9,7 +9,7 @@
     <!--
         Add fields for installation/product emission linkage and record metadata.
     -->
-    <changeSet id="20240215000004-1" author="ecopster">
+    <changeSet id="20240215000004-1" author="jhipster">
         <addColumn tableName="emission_record">
             <column name="installation_id" type="varchar(100)"/>
             <column name="product_emission_id" type="varchar(100)"/>

@@ -9,7 +9,7 @@
     <!--
         Added the entity AiBudget.
     -->
-    <changeSet id="20240215000002-1" author="ecopster">
+    <changeSet id="20240215000002-1" author="jhipster">
         <createTable tableName="eco_ai_budget">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

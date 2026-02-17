@@ -22,8 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
  * Timezone is environment specific, and can be adjusted according to your needs.
  *
  * For more context, refer to:
- * - GitHub Issue: https://github.com/ecopster/generator-ecopster/issues/22579
- * - Pull Request: https://github.com/ecopster/generator-ecopster/pull/22946
+ * - GitHub Issue: https://github.com/jhipster/generator-jhipster/issues/22579
+ * - Pull Request: https://github.com/jhipster/generator-jhipster/pull/22946
  */
 @IntegrationTest
 class HibernateTimeZoneIT {
@@ -136,7 +136,7 @@ class HibernateTimeZoneIT {
             // Convert to configured timezone
             .withOffsetSameInstant(ZoneId.of(zoneId).getRules().getOffset(Instant.now()))
             // Normalize to System TimeZone.
-            // this behavior looks a bug, refer to https://github.com/ecopster/generator-ecopster/issues/22579.
+            // this behavior looks a bug, refer to https://github.com/jhipster/generator-jhipster/issues/22579.
             .withOffsetSameLocal(OffsetDateTime.ofInstant(Instant.EPOCH, ZoneId.systemDefault()).getOffset())
             // Convert the normalized value to configured timezone
             .withOffsetSameInstant(ZoneId.of(zoneId).getRules().getOffset(Instant.EPOCH))

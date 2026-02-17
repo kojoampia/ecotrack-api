@@ -9,7 +9,7 @@
     <!--
         Added the entity PriceTier.
     -->
-    <changeSet id="20240215000003-1" author="ecopster">
+    <changeSet id="20240215000003-1" author="jhipster">
         <createTable tableName="eco_price_tier">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

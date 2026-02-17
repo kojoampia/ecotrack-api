@@ -35,7 +35,7 @@ public class EmissionReportResource {
 
     private static final String ENTITY_NAME = "emissionReport";
 
-    @Value("${ecopster.clientApp.name}")
+    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final EmissionReportService emissionReportService;

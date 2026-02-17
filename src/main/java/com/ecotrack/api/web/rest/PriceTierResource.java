@@ -35,7 +35,7 @@ public class PriceTierResource {
 
     private static final String ENTITY_NAME = "priceTier";
 
-    @Value("${ecopster.clientApp.name}")
+    @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final PriceTierService priceTierService;

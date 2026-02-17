@@ -9,7 +9,7 @@
     <!--
         Added the entity Lead for collecting email addresses of interested users.
     -->
-    <changeSet id="20260217000001-1" author="ecopster">
+    <changeSet id="20260217000001-1" author="jhipster">
         <createTable tableName="eco_lead">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>

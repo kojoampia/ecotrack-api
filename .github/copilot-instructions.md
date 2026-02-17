@@ -164,7 +164,7 @@ npm run build              # Full frontend optimization
 
 ## References
 
-- [JHipster 8.0 Docs](https://www.ecopster.tech/documentation-archive/v8.0.0)
+- [JHipster 8.0 Docs](https://www.jhipster.tech/documentation-archive/v8.0.0)
 - [Spring Boot 3.1 Reference](https://docs.spring.io/spring-boot/docs/3.1.5/reference/html/)
 - [Angular 16 Guide](https://angular.io/guide/setup-local)
 - [OpenAPI Generator](https://openapi-generator.tech/)

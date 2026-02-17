@@ -1,5 +1,5 @@
 {
-  "generator-ecopster": {
+  "generator-jhipster": {
     "applicationType": "monolith",
     "authenticationType": "jwt",
     "baseName": "ecotrackApi",
@@ -15,7 +15,7 @@
     "enableTranslation": false,
     "entities": [],
     "feignClient": null,
-    "ecopsterVersion": "8.11.0",
+    "jhipsterVersion": "8.11.0",
     "jwtSecretKey": "MjllOTM1ZmJmMDllNGQwM2E0OGZlYTllOTk1ODRmNzVkZmI5ZDg0MWE4Mjg4NzFhZWE5ODNjOTVkNWQ5YTVlNTU4ZGFmYzI0N2NjMjk1Y2Y2NDA0ZTJmMDA0NTYwZTExMmU3MzlmZTVhNTNlNTQ1MGZjZmJjYmRjNzE2YTIyNmI=",
     "microfrontend": null,
     "microfrontends": [],
