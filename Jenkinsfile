@@ -7,7 +7,7 @@ pipeline {
 
     environment {
         REGISTRY = "docker.jojoaddison.net"
-        IMAGE_NAME = "ecotrack-api"
+        IMAGE_NAME = "ecotrackapi"
         // Jenkins credentials ID for your Docker registry
         REGISTRY_CREDENTIALS_ID = "docker-jojoaddison-net-credentials"
         // Jenkins credentials ID for your Git repository
@@ -36,7 +36,7 @@ pipeline {
                     echo "Pushing Docker image: ${imageURL}"
                     withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                         sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin https://${REGISTRY}"
-                        sh "docker tag ecotrackapi:latest ${imageURL}"
+                        sh "docker tag ${IMAGE_NAME}:latest ${imageURL}"
                         sh "docker push ${imageURL}"
                         sh "docker push ${imageName}:latest"
                     }
