@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk AS build
+FROM eclipse-temurin:21-jdk AS build
 
 WORKDIR /api
 
@@ -18,7 +18,7 @@ COPY src/ src/
 
 RUN ./mvnw -DskipTests -Pprod clean package
 
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 

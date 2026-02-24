@@ -33,10 +33,11 @@ pipeline {
                 script {
                     def imageName = "${REGISTRY}/${IMAGE_NAME}"
                     def imageURL = "${imageName}:${env.BUILD_NUMBER}"
+                    sh "docker tag ${IMAGE_NAME}:latest ${imageURL}"
+                    sh "docker tag ${IMAGE_NAME}:latest ${imageName}:latest"
                     echo "Pushing Docker image: ${imageURL}"
                     withCredentials([usernamePassword(credentialsId: REGISTRY_CREDENTIALS_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin https://${REGISTRY}"
-                        sh "docker tag ${IMAGE_NAME}:latest ${imageURL}"
+                        sh "echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin https://${REGISTRY}"                        
                         sh "docker push ${imageURL}"
                         sh "docker push ${imageName}:latest"
                     }
