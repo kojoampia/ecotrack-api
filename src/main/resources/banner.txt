@@ -1,10 +1,9 @@
-
-  ${AnsiColor.GREEN}      ██╗${AnsiColor.RED} ██╗   ██╗ ████████╗ ███████╗   ██████╗ ████████╗ ████████╗ ███████╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ██║   ██║ ╚══██╔══╝ ██╔═══██╗ ██╔════╝ ╚══██╔══╝ ██╔═════╝ ██╔═══██╗
-  ${AnsiColor.GREEN}      ██║${AnsiColor.RED} ████████║    ██║    ███████╔╝ ╚█████╗     ██║    ██████╗   ███████╔╝
-  ${AnsiColor.GREEN}██╗   ██║${AnsiColor.RED} ██╔═══██║    ██║    ██╔════╝   ╚═══██╗    ██║    ██╔═══╝   ██╔══██║
-  ${AnsiColor.GREEN}╚██████╔╝${AnsiColor.RED} ██║   ██║ ████████╗ ██║       ██████╔╝    ██║    ████████╗ ██║  ╚██╗
-  ${AnsiColor.GREEN} ╚═════╝ ${AnsiColor.RED} ╚═╝   ╚═╝ ╚═══════╝ ╚═╝       ╚═════╝     ╚═╝    ╚═══════╝ ╚═╝   ╚═╝
-
-${AnsiColor.BRIGHT_BLUE}:: JHipster 🤓  :: Running Spring Boot ${spring-boot.version} :: Startup profile(s) ${spring.profiles.active} ::
-:: https://www.jhipster.tech ::${AnsiColor.DEFAULT}
+${AnsiColor.GREEN}
+EEEEE   CCC    OOO   TTTTTT RRRRR    AA    CCC   K   K          AA   PPPPP  IIIIII
+E      C   C  O   O    TT   R    R  A  A  C   C  K  K         A  A  P    P    II  
+EEEEE  C      O   O    TT   RRRRR  AAAAAA C      KKK   -----  AAAAAA PPPPP     II  
+E      C   C  O   O    TT   R  R   A    A C   C  K  K         A    A P         II  
+EEEEE   CCC    OOO     TT   R   R  A    A  CCC   K   K         A    A P       IIIIII
+${AnsiColor.DEFAULT}
+${AnsiColor.BRIGHT_BLUE}:: EcoTrack-API :: Running Spring Boot ${spring-boot.version} :: Startup profile(s) ${spring.profiles.active} ::
+:: https://www.ecotrackapp.com ::${AnsiColor.DEFAULT}
